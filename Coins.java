@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 import static java.lang.Thread.sleep;
 
 class Coins {
@@ -84,9 +83,7 @@ class Coins {
             Game.game.setStackRon(Game.game.getStackRon()+Coins.c.getBet());
             balance();
         }
-
     }
-
 
     private int getPlayerBag() {
         return playerBag;

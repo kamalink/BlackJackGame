@@ -7,8 +7,8 @@ class FQ {
         System.out.println("Рон: Сыграем еще раз? Да или Нет?");
         Game.game.setAnswer(scan.next());
 
-        while (!Game.game.getAnswer().equals("Да") || !Game.game.getAnswer().equals("Нет")) {
-            if (Game.game.getAnswer().equals("Да")) {
+        while (!Game.game.getAnswer().equalsIgnoreCase("Да") || !Game.game.getAnswer().equalsIgnoreCase("Нет")) {
+            if (Game.game.getAnswer().equalsIgnoreCase("Да")) {
                 Game.game.setStack(0);
                 Game.game.setStackRon(0);
                 Coins.c.Bet();
@@ -21,7 +21,7 @@ class FQ {
                 Game.game.altStart();
                 Game.game.newGame();
                 break;
-            } else if (Game.game.getAnswer().equals("Нет")) {
+            } else if (Game.game.getAnswer().equalsIgnoreCase("Нет")) {
                 sleep(1500);
                 System.out.println("Рон: Тогда спасибо за игру! Увидимся");
                 System.exit(0);
@@ -32,3 +32,4 @@ class FQ {
         }
     }
 }
+

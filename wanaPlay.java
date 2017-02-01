@@ -3,7 +3,8 @@ import static java.lang.Thread.sleep;
 
 class wanaPlay {
 
-    static int WanaPlay() throws InterruptedException {
+    static void WanaPlay() throws InterruptedException {
+        wanaPlay fail = new wanaPlay();
         Scanner scan = new Scanner(System.in);
         Coins.c.setPlayerBag(15);
         Coins.c.setRonBag(100);
@@ -20,35 +21,32 @@ class wanaPlay {
             sleep(3000);
             Coins.c.balance();
             sleep(2500);
-            System.out.print("Рон: Ты, кстати, правила знаешь? Если хочешь могу объяснить, это быстро.");
+            System.out.println("Рон: Ты, кстати, правила знаешь?");
+            sleep(1500);
+            System.out.print("Рон: Если хочешь чтобы я рассказал - напиши что-нибудь.");
             sleep(2500);
-            System.out.println(" Просто напиши Давай или НеНадо.");
+            System.out.println(" А если НЕ хочешь, просто напиши \"нет\".");
             Game.game.setAnswer(scan.next());
         }
 
-
-        while (!Game.game.getAnswer().equals("Давай")||!Game.game.getAnswer().equals("НеНадо")) {
-            if (Game.game.getAnswer().equals("Давай")) {
-                sleep(1500);
-                Game.game.rules();
-                sleep(2000);
-                System.out.println("Рон: Начнем?");
-                break;
-            } else if(Game.game.getAnswer().equals("НеНадо")) {
+        switch (Game.game.getAnswer()) {
+            case "нет":
                 sleep(1500);
                 System.out.println("Рон: Хорошо, начнем?");
                 sleep(1500);
                 break;
-            } else {
-                System.out.println("Напиши еще раз");
-                Game.game.setAnswer(scan.next());
-            }
+            default:
+                sleep(1500);
+                Game.game.rules();
+                sleep(2000);
+                System.out.println("Начнем?");
+                break;
         }
 
         {
             sleep(1000);
             Coins.c.Bet();
-            sleep(1500);
+            sleep(2000);
             System.out.println("Мужчина достает из сумки колоду и ложит на стол.");
             sleep(3000);
             System.out.println("Рон: Ты берешь первый.");
@@ -63,37 +61,42 @@ class wanaPlay {
             sleep(1200);
             System.out.println("\"Давиться смехом\"");
             sleep(3000);
-            System.out.print("Рон: Ох уж эти путники. Кто откуда, а шуток не понимают.");
+            System.out.println("Рон: Ох уж эти путники. Кто откуда, а шуток не понимают.");
             sleep(1500);
-            System.out.println(" Просто напиши \"ДайКарту\".");
-        }
-
-        while (!Game.game.getAnswer().equals("ДайКарту")) {
+            System.out.println("Рон: Так что, давать карту?");
+            sleep(2000);
+            System.out.println("Мужчина смотрит на вас.");
+            sleep(2000);
+            System.out.println("Рон: или \"подождем\"?");
             Game.game.setAnswer(scan.next());
-            if (Game.game.getAnswer().equals("ДайКарту")) {
-                sleep(1000);
-                System.out.println("\n" + "Рон: Держи!");
-                Game.game.setStack(Game.game.newCard());
-                sleep(2000);
-                System.out.print("Мужчина передает вам карту.");
-                sleep(3000);
-                System.out.println(" Вы берете ее в руку и переворачиваете.");
-                Game.game.setStackRon(Game.game.newCard());
-                sleep(2000);
-                System.out.println(Game.game.getStack());
-                break;
+
+            if (Game.game.getAnswer().equalsIgnoreCase("подождем")) {
+                sleep(1200);
+                System.out.println("Человек улыбнулся.");
+                sleep(1300);
+                System.out.println("Рон: Прости, старик, не выйдет.");
+                sleep(1500);
+                fail.give();
             } else {
-                sleep(1000);
-                System.out.println("\n" + "Рон: Что? Что ты написал?");
-                sleep(2000);
-                System.out.println("Рон: Я не могу разобрать что это, но точно не ДайКарту.");
-                sleep(1000);
-                System.out.println("Напиши еще раз.");
+                sleep(1500);
+                fail.give();
             }
         }
-        return 0;
+    }
+
+    private void give() throws InterruptedException {
+        System.out.println("Мужчина передает вам карту.");
+        sleep(1500);
+        System.out.println("\n" + "Рон: Держи!");
+        Game.game.setStack(Game.game.newCard());
+        sleep(3000);
+        System.out.println("Вы берете ее в руку и переворачиваете.");
+        Game.game.setStackRon(Game.game.newCard());
+        sleep(2000);
+        System.out.println(Game.game.getStack());
     }
 }
+
 
 
 
