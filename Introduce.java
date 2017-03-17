@@ -2,8 +2,12 @@ import java.util.Scanner;
 import static java.lang.Thread.sleep;
 
 class Introduce {
+
     static void introduce() throws InterruptedException {
         Scanner scan = new Scanner(System.in);
+
+        //Now game will start
+
         sleep(1000);
         System.out.print(".");
         sleep(1000);
@@ -30,6 +34,7 @@ class Introduce {
         System.out.print("Рон: Аа, я смотрю ты не умеешь говорить на нашем языке!");
         sleep(2500);
         System.out.println(" Ничего страшного, вот перо. Напиши тут, я пойму тебя!");
+
         Game.game.setName(scan.next());
         sleep(1500);
     }

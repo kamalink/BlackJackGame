@@ -2,13 +2,13 @@ import java.util.Scanner;
 import static java.lang.Thread.sleep;
 
 class Coins {
-    private Scanner scan = new Scanner(System.in);
+    Scanner scan = new Scanner(System.in);
     private int playerBag;
     private int ronBag;
     private int bet;
     static Coins c = new Coins();
 
-    void balance(){
+    void balance() {
         System.out.println("У вас " + getPlayerBag() + " монет." + "\n" + "У Рона " + getRonBag() + " монет.");
     }
 

@@ -15,6 +15,7 @@ class Game {
         ronStack.RonStack();
         game.newGame();
         FQ.fQ();
+
     }
     void newGame() throws InterruptedException {
         int a=0;
